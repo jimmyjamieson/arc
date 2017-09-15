@@ -17,15 +17,18 @@ const GlobalHeaderStyle = styled.div`
 const HeaderColumn = styled.div`
   display: flex;
   align-items: center;
-  flex: 1;
+`;
+
+const CenterColumn = styled(HeaderColumn)`
+  flex-grow: 1;
 `;
 
 const GlobalHeader = () => (
   <GlobalHeaderStyle>
     <HeaderColumn><IconMenu /></HeaderColumn>
-    <HeaderColumn>
+    <CenterColumn>
     menu
-    </HeaderColumn>
+    </CenterColumn>
   </GlobalHeaderStyle>
 )
 
