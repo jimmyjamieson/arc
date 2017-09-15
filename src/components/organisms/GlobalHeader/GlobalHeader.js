@@ -1,22 +1,31 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../../atoms/Icon/Icon'
 import IconMenu from '../../molecules/Icons/IconMenu'
 // import OfflineIndicator from '../../molecules/OfflineIndicator/OfflineIndicator';
 
 const GlobalHeaderStyle = styled.div`
+  display: flex;
+  align-content: space-around;
+  align-items: center;
+  padding: 0 .8rem;
+  height: 60px;
   background: lightseagreen;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-`
+`;
+
+const HeaderColumn = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+`;
 
 const GlobalHeader = () => (
   <GlobalHeaderStyle>
-    <div>Starter <Icon icon="menu" /> <IconMenu /> <IconMenu /></div>
-    <div>
+    <HeaderColumn><IconMenu /></HeaderColumn>
+    <HeaderColumn>
     menu
-    </div>
-    <div>{/* <OfflineIndicator /> */}</div>
+    </HeaderColumn>
   </GlobalHeaderStyle>
 )
 
