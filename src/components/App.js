@@ -4,18 +4,31 @@ import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
 import GlobalTemplate from './templates/GlobalTemplate'
-
 import HomePage from './pages/HomePage/index'
 
-// https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
-
 injectGlobal`
-  body {
-    margin: 0;
+   *, *:after, *:before {
+        box-sizing: border-box;
+   }
+   html {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+   }
+  body, main#app, [data-reactroot] {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    margin:0; padding: 0;
+    min-height: 100vh;
   }
-`
+`;
 
 const App = () => {
   return (
