@@ -3,10 +3,13 @@ import { Switch, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
+import GlobalTemplate from './templates/GlobalTemplate'
+
 import HomePage from './pages/HomePage/index'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
+
 
 injectGlobal`
   body {
@@ -29,9 +32,11 @@ const App = () => {
         <link rel="icon" href="https://arc.js.org/icon.png" />
       </Helmet>
       <ThemeProvider theme={theme}>
-        <Switch>
-          <Route path="/" component={HomePage} exact />
-        </Switch>
+        <GlobalTemplate>
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+          </Switch>
+        </GlobalTemplate>
       </ThemeProvider>
     </div>
   )
