@@ -4,6 +4,7 @@ const devServer = require('@webpack-blocks/dev-server2')
 const splitVendor = require('webpack-blocks-split-vendor')
 const happypack = require('webpack-blocks-happypack')
 const serverSourceMap = require('webpack-blocks-server-source-map')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 const AssetsByTypePlugin = require('webpack-assets-by-type-plugin')
 const ChildConfigPlugin = require('webpack-child-config-plugin')
@@ -84,6 +85,13 @@ const server = createConfig([
     new webpack.BannerPlugin({
       banner: 'global.assets = require("./assets.json");',
       raw: true,
+    }),
+    new LodashModuleReplacementPlugin({
+      currying: true,
+      flattening: true,
+      paths: true,
+      placeholders: true,
+      shorthands: true,
     }),
   ]),
   () => ({
