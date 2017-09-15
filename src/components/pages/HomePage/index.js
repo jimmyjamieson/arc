@@ -1,9 +1,24 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+
+const HomeWrapper = styled.div`
+  position: relative;
+  background: linear-gradient(lightseagreen, deepskyblue);
+  height: 100vh;
+`
+
+const TestVh = styled.div`
+  background: coral;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50px;
+  border-bottom: solid 1px white;
+`
 
 const HomePage = () => {
   return (
-    <div>Hello World...</div>
+    <HomeWrapper>Hello World...<TestVh /></HomeWrapper>
   )
 }
 

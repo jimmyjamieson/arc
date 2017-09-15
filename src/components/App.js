@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
-import { HomePage } from 'components'
+import HomePage from './pages/HomePage/index'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
@@ -17,7 +17,7 @@ injectGlobal`
 const App = () => {
   return (
     <div>
-      <Helmet titleTemplate="ARc - %s">
+      <Helmet titleTemplate="%s - Arc">
         <title>Atomic React</title>
         <meta name="description" content="React starter kit based on Atomic Design with React Router v4, Webpack, Redux, Server Side Rendering and more." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
