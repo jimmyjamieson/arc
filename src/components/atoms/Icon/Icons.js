@@ -1,29 +1,6 @@
-/* eslint-disable */
-
-/**
 import { css } from 'styled-components';
 
 const Icons = css`
-  @font-face {
-    font-family: "Material Design Icons";
-    src: url(".../static/fonts/materialdesignicons-webfont.eot?v=2.0.46");
-    src: url(".../static/fonts/materialdesignicons-webfont.eot?#iefix&v=2.0.46") format("embedded-opentype"), url(".../static/fonts/materialdesignicons-webfont.woff2?v=2.0.46") format("woff2"), url(".../static/fonts/materialdesignicons-webfont.woff?v=2.0.46") format("woff"), url(".../static/fonts/materialdesignicons-webfont.ttf?v=2.0.46") format("truetype"), url(".../static/fonts/materialdesignicons-webfont.svg?v=2.0.46#materialdesigniconsregular") format("svg");
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
-
-
-.mdi:before,
-.mdi-set {
-  display: inline-block;
-  font: normal normal normal 24px/1 "Material Design Icons";
-  font-size: inherit;
-  text-rendering: auto;
-  line-height: inherit;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 .mdi-access-point:before {
   content: "\F002";
@@ -8213,6 +8190,6 @@ const Icons = css`
   content: "\F68C";
   visibility: hidden;
 }
- */
+`
 
 export default Icons;

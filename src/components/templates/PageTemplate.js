@@ -1,7 +1,7 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import GlobalTemplate from '../templates/GlobalTemplate';
+import React from 'react'
+import styled from 'styled-components'
+import GlobalTemplate from '../templates/GlobalTemplate'
 
 const PageContentWrapper = styled.main`
     flex: 1;
@@ -10,15 +10,15 @@ const PageContentWrapper = styled.main`
     padding: calc(60px + 1rem) 1rem 1rem 1rem;
 `;
 
-const PageTemplate = (props:Object) => {
-  const { children } = props;
+const PageTemplate = (props) => {
+  const { children } = props
   return (
     <GlobalTemplate>
       <PageContentWrapper>
         { children }
       </PageContentWrapper>
     </GlobalTemplate>
-  );
+  )
 };
 
-export default PageTemplate;
+export default PageTemplate

@@ -6,7 +6,6 @@ import GlobalHeader from '../organisms/GlobalHeader/GlobalHeader'
 import { ChildrenProp } from '../../utils/props'
 
 
-// eslint-disable-next-line no-unused-expressions
 injectGlobal`
    *, *:after, *:before {
         box-sizing: border-box;
@@ -39,13 +38,13 @@ injectGlobal`
       display: none;
     }
   }
-`
+`;
 
 const GlobalTemplateWrapper = styled.div`
   flex: 1 0;
-`
+`;
 
-class GlobalTemplate extends PureComponent<Object, Object> {
+class GlobalTemplate extends PureComponent {
   static propTypes = {
     ...ChildrenProp,
   };
