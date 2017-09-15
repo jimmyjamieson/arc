@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Chart } from 'react-d3-core'
+// import { Chart } from 'react-d3-core'
 import { PieChart as D3PieChart } from 'react-d3-basic'
 
 const ChartData = [
@@ -44,9 +44,7 @@ const ChartData = [
 class PieChart extends PureComponent {
   render() {
     return (
-      <Chart title="Test Pie Chart" width="100%" height="550px">
-        <D3PieChart data={ChartData} />
-      </Chart>
+      <D3PieChart data={ChartData} title="Test Pie Chart" width="100%" height="550px" />
     )
   }
 }
