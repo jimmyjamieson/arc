@@ -1,12 +1,13 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import { injectGlobal, ThemeProvider } from 'styled-components'
-import Helmet from 'react-helmet'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { injectGlobal, ThemeProvider } from 'styled-components';
+import Helmet from 'react-helmet';
 
-import GlobalTemplate from './templates/GlobalTemplate'
-import HomePage from './pages/HomePage/index'
+import GlobalTemplate from './templates/GlobalTemplate';
+import theme from './themes/default';
 
-import theme from './themes/default'
+import HomePage from './pages/HomePage/index';
+import FormsPage from './pages/FormsPage/index';
 
 injectGlobal`
    *, *:after, *:before {
@@ -48,11 +49,12 @@ const App = () => {
         <GlobalTemplate>
           <Switch>
             <Route path="/" component={HomePage} exact />
+            <Route path="/forms" component={FormsPage} exact />
           </Switch>
         </GlobalTemplate>
       </ThemeProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

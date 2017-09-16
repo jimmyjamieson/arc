@@ -1,12 +1,41 @@
 // @flow
 import React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+import NavLink from 'react-router-dom/NavLink';
 
-const LinkStyle = styled(Link)`
-    color: white;
+const styles = css`
+  font-family: ${font('primary')};
+  text-decoration: none;
+  font-weight: 500;
+  color: ${palette({ grayscale: 0 }, 1)};
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-export default (props) => (
-  <LinkStyle {...props} />
-);
+const StyledNavLink = styled(({ theme, reverse, palette, ...props }) =>
+  <NavLink {...props} />
+)`${styles}`;
+const Anchor = styled.a`${styles}`;
+
+const Link = ({ ...props }:Object) => {
+  if (props.to) {
+    return <StyledNavLink {...props} />;
+  }
+  return <Anchor {...props} />;
+};
+
+Link.propTypes = {
+  palette: PropTypes.string,
+  reverse: PropTypes.bool,
+  to: PropTypes.string,
+};
+
+Link.defaultProps = {
+  palette: 'primary',
+};
+
+export default Link;

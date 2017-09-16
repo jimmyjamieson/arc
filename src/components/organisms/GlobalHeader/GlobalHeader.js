@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconMenu from '../../molecules/Icons/IconMenu';
+import Link from '../../atoms/Link/Link';
 // import OfflineIndicator from '../../molecules/OfflineIndicator/OfflineIndicator';
 
 const GlobalHeaderStyle = styled.div`
@@ -29,7 +30,8 @@ const GlobalHeader = () => (
       <IconMenu color="white" />
     </HeaderColumn>
     <CenterColumn>
-    menu
+      <Link to="/" exact activeClassName="active">Home</Link>
+      <Link to="/forms" exact activeClassName="active">Forms</Link>
     </CenterColumn>
   </GlobalHeaderStyle>
 );
