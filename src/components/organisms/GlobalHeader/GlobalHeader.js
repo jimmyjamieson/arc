@@ -25,7 +25,9 @@ const CenterColumn = styled(HeaderColumn)`
 
 const GlobalHeader = () => (
   <GlobalHeaderStyle>
-    <HeaderColumn><IconMenu /></HeaderColumn>
+    <HeaderColumn>
+      <IconMenu />
+    </HeaderColumn>
     <CenterColumn>
     menu
     </CenterColumn>
