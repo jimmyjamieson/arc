@@ -1,11 +1,10 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react';
 
-
-const HomePage = () => {
+const GridsPage = () => {
   return (
-    <div>Hello World...</div>
+    <div>Grids...</div>
   );
 };
 
-export default HomePage;
+export default GridsPage;

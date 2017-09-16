@@ -8,6 +8,8 @@ import theme from './themes/default';
 
 import HomePage from './pages/HomePage/index';
 import FormsPage from './pages/FormsPage/index';
+import ChartsPage from './pages/ChartsPage/ChartsPage';
+import GridsPage from './pages/GridPage/GridPage';
 
 injectGlobal`
    *, *:after, *:before {
@@ -49,7 +51,9 @@ const App = () => {
         <GlobalTemplate>
           <Switch>
             <Route path="/" component={HomePage} exact />
+            <Route path="/grids" component={GridsPage} exact />
             <Route path="/forms" component={FormsPage} exact />
+            <Route path="/charts" component={ChartsPage} exact />
           </Switch>
         </GlobalTemplate>
       </ThemeProvider>

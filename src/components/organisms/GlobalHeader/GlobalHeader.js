@@ -31,7 +31,9 @@ const GlobalHeader = () => (
     </HeaderColumn>
     <CenterColumn>
       <Link to="/" exact activeClassName="active">Home</Link>
+      <Link to="/grids" exact activeClassName="active">Grids</Link>
       <Link to="/forms" exact activeClassName="active">Forms</Link>
+      <Link to="/charts" exact activeClassName="active">Charts</Link>
     </CenterColumn>
     <HeaderColumn>
       <IconMenu color="white" />
