@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IconMenu from '../../molecules/Icons/IconMenu';
 import Link from '../../atoms/Link/Link';
+import IconAccountCircle from '../../molecules/Icons/IconAccountCircle';
 // import OfflineIndicator from '../../molecules/OfflineIndicator/OfflineIndicator';
 
 const GlobalHeaderStyle = styled.div`
@@ -36,7 +37,7 @@ const GlobalHeader = () => (
       <Link to="/charts" exact activeClassName="active">Charts</Link>
     </CenterColumn>
     <HeaderColumn>
-      <IconMenu color="white" />
+      <IconAccountCircle color="white" />
     </HeaderColumn>
   </GlobalHeaderStyle>
 );
