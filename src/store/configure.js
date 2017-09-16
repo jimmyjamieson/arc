@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { isDev, isBrowser } from 'config'
 import middlewares from './middlewares'
-import reducer from './reducer'
+import reducers from './reducers'
 import sagas from './sagas'
 
 const devtools = isDev && isBrowser && window.devToolsExtension
@@ -21,7 +21,7 @@ const configureStore = (initialState, services = {}) => {
     devtools(),
   ]
 
-  const store = createStore(reducer, initialState, compose(...enhancers))
+  const store = createStore(reducers, initialState, compose(...enhancers))
   let sagaTask = sagaMiddleware.run(sagas, services)
 
   if (module.hot) {

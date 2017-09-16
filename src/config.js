@@ -1,4 +1,4 @@
-const merge = require('lodash/merge')
+import merge from 'lodash/fp/merge';
 
 const config = {
   all: {
@@ -9,15 +9,15 @@ const config = {
     port: process.env.PORT || 8008,
     isBrowser: typeof window !== 'undefined',
     isServer: typeof window === 'undefined',
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: 'http://swapi.co/api',
   },
   test: {},
   development: {},
   production: {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8080,
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: 'http://swapi.co/api',
   },
-}
+};
 
-module.exports = merge(config.all, config[config.all.env])
+module.exports = merge(config.all, config[config.all.env]);
