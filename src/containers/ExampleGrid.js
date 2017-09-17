@@ -13,7 +13,7 @@ import Container from '../components/atoms/Container/Container';
 
 class ExampleGrid extends PureComponent<Object, Object> {
   static propTypes = {
-    people: PropTypes.arrayOf(PropTypes.object).isRequired,
+    people: PropTypes.object.isRequired,
     loading: PropTypes.bool,
     search: PropTypes.object,
     fetchPeople: PropTypes.func.isRequired,
@@ -36,15 +36,16 @@ class ExampleGrid extends PureComponent<Object, Object> {
     }
   }
 
-  searchValue: string;
+  searchValue:String;
   search = (e:Object) => {
     this.searchValue = e.target.value;
+    console.log('searchValue', this.searchValue);
   };
 
   render() {
     const peopleList = this.props.people.data.results;
     const loading = this.props.people.loading;
-    console.log('props', this.props);
+    console.log('props', this.props, 'searchValue', this.searchValue);
     const config = [
       {
         name: 'Name1',
@@ -94,7 +95,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
       <div>
         <AppBar><Field name="search" placeholder="Search..." onChange={this.search} /></AppBar>
         <Container>
-          <DataGrid data={peopleList || []} config={config || []} dataAction="" search={this.searchValue || ''} loading={loading} />
+          <DataGrid data={peopleList || {}} config={config || {}} dataAction="" search={this.searchValue} loading={loading} />
         </Container>
       </div>
     );

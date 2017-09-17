@@ -54,6 +54,7 @@ class DataGrid extends PureComponent<Object, Object> {
     };
   }
   filter = (e:Object) => {
+    console.log('state.search', this.state.search);
     this.setState({
       filters:
       {
@@ -64,19 +65,10 @@ class DataGrid extends PureComponent<Object, Object> {
     console.log('Filters...', this.state.filters);
   };
   render() {
-    const { data, config, loading, search } = this.props;
-    // const filters = this.state.filters;
-    /* const filteredItems = data.filter(
-      item => Object.entries(filters).map((key, value) =>
-        console.log('Item', key + value),
-        // item[key].toLowerCase().indexOf(value.toLowerCase()) !== -1,
-      ),
-      // item => item.name.toLowerCase().includes(this.state.search.toLowerCase()) !== -1,
-    ); */
+    const { data, config, loading } = this.props;
     const filteredData = data.filter(
-      item => item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1,
+      item => item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1,
     );
-    // console.log('filteredItems', filteredItems);
     return (
       <Container>
         { loading ?
