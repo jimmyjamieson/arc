@@ -1,19 +1,14 @@
-// https://github.com/diegohaz/arc/wiki/Reducers
-import camelCase from 'lodash/camelCase'
-import { combineReducers } from 'redux'
-import { reducer as form } from 'redux-form'
-// import { reducer as thunk } from 'redux-saga-thunk'
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
-const reducers = {
+import app from './app';
+import people from './people';
+
+const RootReducer = combineReducers({
   form,
-  // thunk,
-}
+  app,
+  people,
+});
 
-const req = require.context('.', true, /\.\/.+\/reducer\.js$/)
+export default RootReducer;
 
-req.keys().forEach((key) => {
-  const storeName = camelCase(key.replace(/\.\/(.+)\/.+$/, '$1'))
-  reducers[storeName] = req(key).default
-})
-
-export default combineReducers(reducers)

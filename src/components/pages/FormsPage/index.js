@@ -1,10 +1,11 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react';
+import PageTemplate from '../../templates/PageTemplate';
 
 
 const FormsPage = () => {
   return (
-    <div>Forms...</div>
+    <PageTemplate>Forms...</PageTemplate>
   );
 };
 

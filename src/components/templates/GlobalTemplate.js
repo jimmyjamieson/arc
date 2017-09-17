@@ -6,7 +6,9 @@ import GlobalHeader from '../organisms/GlobalHeader/GlobalHeader';
 import { ChildrenProp } from '../../utils/props';
 
 const GlobalTemplateWrapper = styled.div`
-  flex: 1 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 class GlobalTemplate extends PureComponent<Object, Object> {
