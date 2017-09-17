@@ -1,4 +1,4 @@
-import merge from 'lodash/fp/merge';
+import { merge } from 'lodash';
 
 const config = {
   all: {
