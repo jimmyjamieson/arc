@@ -8,7 +8,7 @@ import { LabelProps } from '../../atoms/Label/LabelProps';
 import { InputProps } from '../../atoms/Input/inputProps';
 
 const InputColumn = styled.div`
-  display: inline-block;
+  display: block;
   padding: .5rem;
 `;
 

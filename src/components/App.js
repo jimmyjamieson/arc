@@ -36,7 +36,7 @@ injectGlobal`
 const App = () => {
   return (
     <div>
-      <Helmet titleTemplate="%s - Arc">
+      <Helmet titleTemplate="%s - Affectli">
         <title>Affectli</title>
         <meta name="description" content="React starter kit based on Atomic Design with React Router v4, Webpack, Redux, Server Side Rendering and more." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
