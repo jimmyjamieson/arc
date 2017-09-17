@@ -5,6 +5,7 @@ const DataGridProps = {
   data: PropTypes.array.isRequired,
   config: PropTypes.array.isRequired,
   loading: PropTypes.bool,
+  search: PropTypes.string,
 };
 
 const DataGridDefaultProps = {

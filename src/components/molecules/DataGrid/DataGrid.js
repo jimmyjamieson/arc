@@ -12,14 +12,6 @@ const Container = styled.div`
   overflow: auto;
 `;
 
-const SearchBar = styled.header`
-  display: block;
-  width: 100%;
-  background: dodgerblue;
-  color: white;
-  padding: 0.6rem;
-`;
-
 const Table = styled.table`
   display: block;
   height: 100%;
@@ -54,7 +46,7 @@ class DataGrid extends PureComponent<Object, Object> {
   static defaultProps = {
     ...DataGridDefaultProps,
   };
-  constructor(props) {
+  constructor(props:Object) {
     super(props);
     this.state = {
       search: '',
@@ -70,57 +62,52 @@ class DataGrid extends PureComponent<Object, Object> {
   filter = (e:Object) => {
     this.setState({
       filters:
-        {
-          ...this.state.filters,
-          [e.target.name]: e.target.value,
-        },
+      {
+        ...this.state.filters,
+        [e.target.name]: e.target.value,
+      },
     });
     console.log('Filters...', this.state.filters);
   };
   render() {
-    const { data, config, loading } = this.props;
-    const filters = this.state.filters;
-    const filteredItems = data.filter(
+    const { data, config, loading, search } = this.props;
+    // const filters = this.state.filters;
+    /* const filteredItems = data.filter(
       item => Object.entries(filters).map((key, value) =>
         console.log('Item', key + value),
         // item[key].toLowerCase().indexOf(value.toLowerCase()) !== -1,
       ),
       // item => item.name.toLowerCase().includes(this.state.search.toLowerCase()) !== -1,
-    );
+    ); */
     const filteredData = data.filter(
-      item => item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1,
+      item => item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1,
     );
     // console.log('filteredItems', filteredItems);
     return (
       <Container>
         { loading ?
           <p>Loading...</p> :
-          <div>
-            <SearchBar>
-              <Field name="search" type="text" placeholder="Search all" onChange={this.search} />
-            </SearchBar>
-            <Table>
-              <Thead>
-                <Tr>
-                  {config.map(header => (
-                    <Th key={`header-${header.fieldKey}`}>
-                      {header.name}
-                      <Field name={header.fieldKey} type={header.type} placeholder={`Filter ${header.name}`} onChange={this.filter} />
-                    </Th>
+          <Table>
+            <Thead>
+              <Tr>
+                {config.map(header => (
+                  <Th key={`header-${header.fieldKey}`}>
+                    {header.name}
+                    <Field name={header.fieldKey} type={header.type} placeholder={`Filter ${header.name}`} onChange={this.filter} />
+                  </Th>
                   ))}
-                </Tr>
-              </Thead>
-              <Tbody>
-                {filteredData.map(field => (
-                  <Tr key={field.name}>
-                    {config.map(conf => (
-                      <Td key={`col-${conf.fieldKey}`}><DataItem name={conf.fieldKey} type={conf.type} value={field[conf.fieldKey]} editable={conf.editable} /></Td>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {filteredData.map(field => (
+                <Tr key={field.name}>
+                  {config.map(conf => (
+                    <Td key={`col-${conf.fieldKey}`}><DataItem name={conf.fieldKey} type={conf.type} value={field[conf.fieldKey]} editable={conf.editable} /></Td>
                     ))}
-                  </Tr>
+                </Tr>
                 ))}
-              </Tbody>
-            </Table>
-          </div>
+            </Tbody>
+          </Table>
         }
       </Container>
     );

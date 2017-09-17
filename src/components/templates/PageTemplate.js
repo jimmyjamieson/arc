@@ -7,7 +7,6 @@ const PageContentWrapper = styled.main`
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
 `;
 
 const PageTemplate = (props:Object) => {

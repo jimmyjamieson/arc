@@ -3,6 +3,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PageTemplate from '../../templates/PageTemplate';
 import ExampleGrid from '../../../containers/ExampleGrid';
+import AppBar from '../../atoms/AppBar/AppBar';
+import Field from '../../molecules/Field/Field';
+import Container from '../../atoms/Container/Container';
 
 const GridsPage = () => {
   return (
@@ -10,7 +13,10 @@ const GridsPage = () => {
       <Helmet>
         <title>Grid Example</title>
       </Helmet>
-      <ExampleGrid />
+      <AppBar><Field name="search" placeholder="Search..." /></AppBar>
+      <Container>
+        <ExampleGrid search="" />
+      </Container>
     </PageTemplate>
   );
 };

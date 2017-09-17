@@ -14,6 +14,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
     limit: PropTypes.number,
     loading: PropTypes.bool,
     failed: PropTypes.bool,
+    search: PropTypes.object,
     fetchPeople: PropTypes.func.isRequired,
     hasServerState: PropTypes.bool,
     setServerState: PropTypes.func.isRequired,
@@ -37,6 +38,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
   render() {
     const peopleList = this.props.people.data.results;
     const loading = this.props.people.loading;
+    const search = this.props.search;
     console.log('props', this.props);
     const config = [
       {
@@ -83,7 +85,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
       },
     ];
     return (
-      <DataGrid data={peopleList} config={config} dataAction="" loading={loading} />
+      <DataGrid data={peopleList || []} config={config || []} dataAction="" search={search} loading={loading} />
     );
   }
 }
