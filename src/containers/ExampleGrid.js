@@ -2,18 +2,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { fetchState } from 'react-router-server';
 import { connect } from 'react-redux';
+import { withServerState } from '../utils/with-server-state';
 import DataGrid from '../components/molecules/DataGrid/DataGrid';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
+import AppBar from '../components/atoms/AppBar/AppBar';
+import Field from '../components/molecules/Field/Field';
+import Container from '../components/atoms/Container/Container';
 
 class ExampleGrid extends PureComponent<Object, Object> {
   static propTypes = {
     people: PropTypes.arrayOf(PropTypes.object).isRequired,
-    limit: PropTypes.number,
     loading: PropTypes.bool,
-    failed: PropTypes.bool,
     search: PropTypes.object,
     fetchPeople: PropTypes.func.isRequired,
     hasServerState: PropTypes.bool,
@@ -35,10 +36,14 @@ class ExampleGrid extends PureComponent<Object, Object> {
     }
   }
 
+  searchValue: string;
+  search = (e:Object) => {
+    this.searchValue = e.target.value;
+  };
+
   render() {
     const peopleList = this.props.people.data.results;
     const loading = this.props.people.loading;
-    const search = this.props.search;
     console.log('props', this.props);
     const config = [
       {
@@ -84,8 +89,14 @@ class ExampleGrid extends PureComponent<Object, Object> {
         editable: true,
       },
     ];
+
     return (
-      <DataGrid data={peopleList || []} config={config || []} dataAction="" search={search} loading={loading} />
+      <div>
+        <AppBar><Field name="search" placeholder="Search..." onChange={this.search} /></AppBar>
+        <Container>
+          <DataGrid data={peopleList || []} config={config || []} dataAction="" search={this.searchValue || ''} loading={loading} />
+        </Container>
+      </div>
     );
   }
 }
@@ -97,15 +108,5 @@ const mapStateToProps = (state:Object) => ({
 const mapDispatchToProps = (dispatch:Object) => ({
   fetchPeople: bindActionCreators(fetchPeople, dispatch),
 });
-
-const withServerState = fetchState(
-  state => ({
-    hasServerState: !!state.data,
-  }),
-  actions => ({
-    setServerState: data => actions.done({ data }),
-    cleanServerState: () => actions.done(),
-  })
-);
 
 export default withServerState(connect(mapStateToProps, mapDispatchToProps)(ExampleGrid));

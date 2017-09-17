@@ -49,16 +49,10 @@ class DataGrid extends PureComponent<Object, Object> {
   constructor(props:Object) {
     super(props);
     this.state = {
-      search: '',
+      search: this.props.search || '',
       filters: {},
     };
   }
-  search = (e:Object) => {
-    this.setState({
-      search: e.target.value,
-    });
-    console.log('Searching...', this.state.search);
-  };
   filter = (e:Object) => {
     this.setState({
       filters:
