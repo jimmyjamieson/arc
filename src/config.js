@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+const merge = require('lodash/merge')
 
 const config = {
   all: {
