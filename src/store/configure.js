@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 // import createSagaMiddleware from 'redux-saga'
 import { isDev, isBrowser } from 'config';
-import middlewares from './middlewares';
+// import middlewares from './middlewares';
 import reducer from './reducer';
 // import sagas from './sagas'
 
@@ -17,7 +17,7 @@ const configureStore = (initialState, services = {}) => {
   const enhancers = [
     applyMiddleware(
       reduxThunk,
-      ...middlewares,
+      // ...middlewares,
       // sagaMiddleware
     ),
     devtools(),

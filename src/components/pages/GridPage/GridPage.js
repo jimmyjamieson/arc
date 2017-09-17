@@ -2,6 +2,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PageTemplate from '../../templates/PageTemplate';
+import ExampleGrid from '../../../containers/ExampleGrid';
 
 const GridsPage = () => {
   return (
@@ -9,7 +10,7 @@ const GridsPage = () => {
       <Helmet>
         <title>Grid Example</title>
       </Helmet>
-      Grids...
+      <ExampleGrid />
     </PageTemplate>
   );
 };
