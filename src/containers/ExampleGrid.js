@@ -95,7 +95,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
       <div>
         <AppBar><Field name="search" placeholder="Search..." onChange={this.search} /></AppBar>
         <Container>
-          <DataGrid data={peopleList || {}} config={config || {}} dataAction="" search={this.searchValue} loading={loading} />
+          <DataGrid data={peopleList || []} config={config || []} dataAction="" search={this.searchValue} loading={loading} />
         </Container>
       </div>
     );
