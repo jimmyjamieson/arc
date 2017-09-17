@@ -5,6 +5,7 @@ import { palette } from 'styled-theme';
 import IconMenu from '../../molecules/Icons/IconMenu';
 import Link from '../../atoms/Link/Link';
 import IconAccountCircle from '../../molecules/Icons/IconAccountCircle';
+import ToggleMenuButton from '../../molecules/ToggleMenuButton/ToggleMenuButton';
 
 // import OfflineIndicator from '../../molecules/OfflineIndicator/OfflineIndicator';
 
@@ -37,7 +38,7 @@ const GlobalHeader = () => (
   <HeaderWrapper>
     <HeaderInner>
       <HeaderColumn>
-        <IconMenu color="white" />
+        <ToggleMenuButton color="white" />
       </HeaderColumn>
       <CenterColumn>
         <Link to="/" exact activeClassName="active">Home</Link>
