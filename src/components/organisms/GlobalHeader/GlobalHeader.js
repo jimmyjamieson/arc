@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-theme';
-import IconMenu from '../../molecules/Icons/IconMenu';
 import Link from '../../atoms/Link/Link';
 import IconAccountCircle from '../../molecules/Icons/IconAccountCircle';
 import ToggleMenuButton from '../../molecules/ToggleMenuButton/ToggleMenuButton';
