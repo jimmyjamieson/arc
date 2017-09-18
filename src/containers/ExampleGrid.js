@@ -20,7 +20,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
     hasServerState: PropTypes.bool,
     setServerState: PropTypes.func.isRequired,
     cleanServerState: PropTypes.func.isRequired,
-  }
+  };
 
   componentWillMount() {
     const { fetchPeople, hasServerState, setServerState, cleanServerState } = this.props;
