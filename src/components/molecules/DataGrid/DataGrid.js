@@ -4,39 +4,13 @@ import styled from 'styled-components';
 import { DataGridProps, DataGridDefaultProps } from './DataGridProps';
 import Field from '../Field/Field';
 import DataItem from '../DataItem/DataItem';
+import { Table, Thead, Tbody, Th, Tr, Td } from '../../atoms/Table';
 
-const Container = styled.div`
+const GridContainer = styled.div`
   display: block;
   max-width: 100%;
   min-width: 100%;
   overflow: auto;
-`;
-
-const Table = styled.table`
-  display: block;
-  height: 100%;
-  border: solid 1px #efefef;
-  border-top: 0px;
-  border-collapse: collapse;
-`;
-
-const Thead = styled.thead`
-  background: dodgerblue;
-  color: white;
-`;
-
-const Tbody = styled.tbody`
-`;
-
-const Tr = styled.tr`
-  border-bottom: solid 1px #efefef;
-`;
-
-const Td = styled.td`
-  padding: .6rem;
-`;
-const Th = styled.th`
-  padding: .6rem;
 `;
 
 class DataGrid extends PureComponent<Object, Object> {
@@ -70,7 +44,7 @@ class DataGrid extends PureComponent<Object, Object> {
       item => item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1,
     );
     return (
-      <Container>
+      <GridContainer>
         { loading ?
           <p>Loading...</p> :
           <Table>
@@ -95,7 +69,7 @@ class DataGrid extends PureComponent<Object, Object> {
             </Tbody>
           </Table>
         }
-      </Container>
+      </GridContainer>
     );
   }
 }
