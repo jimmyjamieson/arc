@@ -43,6 +43,13 @@ const app = express();
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')));
 
+app.get('dist/public/*.js', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
+
 app.use((req, res, next) => {
   const location = req.url;
   const store = configureStore({}, { api: api.create() });
@@ -71,6 +78,7 @@ app.use((err, req, res, next) => {
   console.error(err);
   next(err);
 });
+
 
 app.listen(port, (error) => {
   const boldBlue = text => `\u001b[1m\u001b[34m${text}\u001b[39m\u001b[22m`;

@@ -10,6 +10,7 @@ const AssetsByTypePlugin = require('webpack-assets-by-type-plugin');
 const ChildConfigPlugin = require('webpack-child-config-plugin');
 const SpawnPlugin = require('webpack-spawn-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const {
   addPlugins, createConfig, entryPoint, env, setOutput,
@@ -61,6 +62,13 @@ const base = () => group([
   }),
   addPlugins([
     new webpack.ProgressPlugin(),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
   ]),
   happypack([
     babel(),
