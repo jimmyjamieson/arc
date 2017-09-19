@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PageTemplate from '../../templates/PageTemplate';
-import PieChart from '../../molecules/charts/pie';
+import PieChart from '../../molecules/Charts/pie';
 
 const ChartsPage = () => {
   return (

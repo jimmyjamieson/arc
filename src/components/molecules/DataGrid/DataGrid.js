@@ -23,7 +23,6 @@ class DataGrid extends PureComponent<Object, Object> {
   constructor(props:Object) {
     super(props);
     this.state = {
-      search: this.props.search || '',
       filters: {},
     };
   }
@@ -41,7 +40,7 @@ class DataGrid extends PureComponent<Object, Object> {
   render() {
     const { data, config, loading } = this.props;
     const filteredData = data.filter(
-      item => item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1,
+      item => item.name.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1,
     );
     return (
       <GridContainer>

@@ -118,6 +118,9 @@ const client = createConfig([
   addPlugins([
     new AssetsByTypePlugin({ path: assetsPath }),
     new ChildConfigPlugin(server),
+    new Visualizer({
+      filename: './build-stats.html',
+    }),
   ]),
 
   env('development', [
@@ -139,9 +142,6 @@ const client = createConfig([
     splitVendor(),
     addPlugins([
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-      new Visualizer({
-        filename: './statistics.html',
-      }),
     ]),
   ]),
 ]);

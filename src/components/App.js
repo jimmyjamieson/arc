@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/index';
 import FormsPage from './pages/FormsPage/index';
 import ChartsPage from './pages/ChartsPage/ChartsPage';
 import GridsPage from './pages/GridPage/GridPage';
+import Error404 from './pages/Errors/404';
 
 injectGlobal`
    *, *:after, *:before {
@@ -54,6 +55,9 @@ const App = () => {
             <Route path="/grids" component={GridsPage} exact />
             <Route path="/forms" component={FormsPage} exact />
             <Route path="/charts" component={ChartsPage} exact />
+            <Route
+              render={() => (<Error404 />)}
+            />
           </Switch>
         </GlobalTemplate>
       </ThemeProvider>

@@ -13,7 +13,7 @@ import Container from '../components/atoms/Container/Container';
 
 class ExampleGrid extends PureComponent<Object, Object> {
   static propTypes = {
-    people: PropTypes.object.isRequired,
+    list: PropTypes.object.isRequired,
     loading: PropTypes.bool,
     search: PropTypes.object,
     fetchPeople: PropTypes.func.isRequired,
@@ -21,6 +21,13 @@ class ExampleGrid extends PureComponent<Object, Object> {
     setServerState: PropTypes.func.isRequired,
     cleanServerState: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
 
   componentWillMount() {
     const { fetchPeople, hasServerState, setServerState, cleanServerState } = this.props;
@@ -36,16 +43,15 @@ class ExampleGrid extends PureComponent<Object, Object> {
     }
   }
 
-  searchValue:String;
   search = (e:Object) => {
-    this.searchValue = e.target.value;
-    console.log('searchValue', this.searchValue);
+    this.setState = { search: e.target.value };
+    console.log('searchValue', e.target.value);
   };
 
   render() {
-    const peopleList = this.props.people.data.results;
-    const loading = this.props.people.loading;
-    console.log('props', this.props, 'searchValue', this.searchValue);
+    const peopleList = this.props.list.data.results;
+    const loading = this.props.list.loading;
+    console.log('props', this.props);
     const config = [
       {
         name: 'Name1',
@@ -95,7 +101,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
       <div>
         <AppBar><Field name="search" placeholder="Search..." onChange={this.search} /></AppBar>
         <Container>
-          <DataGrid data={peopleList || []} config={config || []} dataAction="" search={this.searchValue} loading={loading} />
+          <DataGrid data={peopleList || []} config={config || []} dataAction="" searchValue={this.state.search || ''} filterValues={[]} loading={loading} />
         </Container>
       </div>
     );
@@ -103,7 +109,7 @@ class ExampleGrid extends PureComponent<Object, Object> {
 }
 
 const mapStateToProps = (state:Object) => ({
-  people: state.people.list,
+  list: state.people.list,
 });
 
 const mapDispatchToProps = (dispatch:Object) => ({
