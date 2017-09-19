@@ -132,7 +132,7 @@ const client = createConfig([
     }),
     new SWPrecacheWebpackPlugin(
       {
-        cacheId: 'my-project-name',
+        cacheId: 'affectli',
         dontCacheBustUrlsMatching: /\.\w{8}\./,
         filename: 'service-worker.js',
         minify: true,
