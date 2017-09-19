@@ -11,6 +11,7 @@ const ChildConfigPlugin = require('webpack-child-config-plugin');
 const SpawnPlugin = require('webpack-spawn-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const {
   addPlugins, createConfig, entryPoint, env, setOutput,
@@ -62,6 +63,13 @@ const base = () => group([
   }),
   addPlugins([
     new webpack.ProgressPlugin(),
+    new LodashModuleReplacementPlugin({
+      currying: true,
+      flattening: true,
+      paths: true,
+      placeholders: true,
+      shorthands: true,
+    }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -95,13 +103,6 @@ const server = createConfig([
       banner: 'global.assets = require("./assets.json");',
       raw: true,
     }),
-    new LodashModuleReplacementPlugin({
-      currying: true,
-      flattening: true,
-      paths: true,
-      placeholders: true,
-      shorthands: true,
-    }),
   ]),
   () => ({
     target: 'node',
@@ -129,6 +130,16 @@ const client = createConfig([
     new Visualizer({
       filename: './build-stats.html',
     }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'my-project-name',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        // navigateFallback: client + 'index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
   ]),
 
   env('development', [
