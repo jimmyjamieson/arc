@@ -43,12 +43,6 @@ const app = express();
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')));
 
-app.get('dist/public/*.js', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  next();
-});
-
 
 app.use((req, res, next) => {
   const location = req.url;
@@ -77,6 +71,13 @@ app.use((err, req, res, next) => {
   res.status(500).send(renderHtml({ content, sheet }));
   console.error(err);
   next(err);
+});
+
+// TODO: Get gzip output working
+app.get('*/**.js', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
 });
 
 
