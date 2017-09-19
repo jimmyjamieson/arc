@@ -83,7 +83,8 @@
     "webpack-dev-server": "^2.3.0",
     "webpack-node-externals": "^1.5.4",
     "webpack-spawn-plugin": "^0.1.1",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-visualizer-plugin": "^0.1.11",
+    "sw-precache-webpack-plugin": "^0.11.4"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -117,7 +118,6 @@
     "styled-components": "^2.0.0",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2",
-    "sw-precache-webpack-plugin": "^0.11.4",
     "validator": "^8.0.0",
     "victory": "^0.22.2"
   }
