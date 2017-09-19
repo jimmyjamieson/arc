@@ -16,6 +16,7 @@ const Html = ({ styles, assets, state, content }) => {
         {helmet.link.toComponent()}
         {assets.css.map(path => <link rel="stylesheet" type="text/css" key={path} href={path} />)}
         {styles}
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body {...bodyAttrs}>
         <main id="app" dangerouslySetInnerHTML={{ __html: content }} />
