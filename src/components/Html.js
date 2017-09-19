@@ -1,12 +1,12 @@
 /* eslint-disable react/no-danger */
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
 const Html = ({ styles, assets, state, content }) => {
-  const helmet = Helmet.renderStatic()
-  const htmlAttrs = helmet.htmlAttributes.toComponent()
-  const bodyAttrs = helmet.bodyAttributes.toComponent()
+  const helmet = Helmet.renderStatic();
+  const htmlAttrs = helmet.htmlAttributes.toComponent();
+  const bodyAttrs = helmet.bodyAttributes.toComponent();
 
   return (
     <html lang="en" {...htmlAttrs}>
@@ -23,8 +23,8 @@ const Html = ({ styles, assets, state, content }) => {
         {assets.js.map(path => <script key={path} src={path} />)}
       </body>
     </html>
-  )
-}
+  );
+};
 
 Html.propTypes = {
   styles: PropTypes.node.isRequired,
@@ -34,6 +34,6 @@ Html.propTypes = {
   }).isRequired,
   state: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-}
+};
 
-export default Html
+export default Html;
