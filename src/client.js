@@ -7,11 +7,14 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ServerStateProvider } from 'react-router-server';
+import ServiceWorker from './utils/service-worker';
 
 import { basename } from 'config';
 import configureStore from 'store/configure';
 import api from 'services/api';
 import App from 'components/App';
+
+ServiceWorker();
 
 const serverState = window.__SERVER_STATE__;
 const initialState = window.__INITIAL_STATE__;
