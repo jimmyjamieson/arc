@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withServerState } from '../utils/with-server-state';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
+import { Loader } from '../components/atoms/Loader/Loader';
 
 class VirtualizedExampleGrid extends PureComponent {
 
@@ -38,10 +39,10 @@ class VirtualizedExampleGrid extends PureComponent {
   render() {
     const { list, isLoading } = this.props;
     console.log('List', list);
-    if (isLoading) { return <div>Loading...</div>; }
+    if (isLoading) { return <Loader />; }
     function cellRenderer({ columnIndex, key, rowIndex }) {
       return (
-        <div key={key}>{/*{list} */} {rowIndex} : {columnIndex} some cell</div>
+        <div key={key}>{/* {list} */} {rowIndex} : {columnIndex} some cell</div>
       );
     }
     return (
