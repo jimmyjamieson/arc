@@ -2,7 +2,8 @@ import React from 'react';
 
 export const Loader = () => {
   return (
-    <svg width="45" height="45" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+    <svg width="45" height="45" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff" aria-labelledby="title">
+      <title id="title">Loading.</title>
       <g fill="none" fillRule="evenodd" transform="translate(1 1)" strokeWidth="2">
         <circle cx="22" cy="22" r="6" strokeOpacity="0">
           <animate
