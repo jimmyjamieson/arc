@@ -13,7 +13,7 @@ class Icon extends PureComponent<Object, Object> {
     const { icon, size, color, title, ...rest } = this.props;
 
     return (
-      <svg width={size} height={size} viewBox="0 0 1024 1024" aria-labelledby={title} {...rest}>
+      <svg width={size} height={size} viewBox="0 0 1024 1024" aria-labelledby="title" {...rest}>
         <title id="title">{title}</title>
         <path fill={color} d={icon} />
       </svg>
