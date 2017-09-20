@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
+import { AutoSizer, Grid } from 'react-virtualized';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withServerState } from '../utils/with-server-state';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
 
-import { Grid } from 'react-virtualized';
-
 function cellRenderer() {
-  <div>some cell</div>;
+  return (
+    <div>some cell</div>
+  );
 }
 
 class VirtualizedExampleGrid extends PureComponent {
@@ -29,15 +30,18 @@ class VirtualizedExampleGrid extends PureComponent {
 
   render() {
     return (
-      <Grid
-        cellRenderer={cellRenderer}
-        columnCount={10}
-        columnWidth={100}
-        rowCount={10}
-        rowHeight={50}
-        width={500}
-        height={400}
-      />
+      <AutoSizer>
+        {({ height, width }) => (
+          <Grid
+            cellRenderer={cellRenderer}
+            columnCount={10}
+            columnWidth={100}
+            rowCount={10}
+            rowHeight={50}
+            width={width}
+            height={height}
+          />)}
+      </AutoSizer>
     );
   }
 }
