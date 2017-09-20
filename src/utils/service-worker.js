@@ -17,7 +17,7 @@
 /* eslint-env browser */
 
 export default function register() {
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator  && process.env.NODE_ENV === 'production') {
     // Your service-worker.js *must* be located at the top-level directory relative to your site.
     // It won't be able to control pages unless it's located at the same level or higher than them.
     // *Don't* register service worker file in, e.g., a scripts/ sub-directory!

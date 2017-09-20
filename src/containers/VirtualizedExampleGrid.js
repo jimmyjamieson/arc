@@ -1,3 +1,4 @@
+// @flow
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { AutoSizer, Grid } from 'react-virtualized';
@@ -8,11 +9,15 @@ import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
 import { Loader } from '../components/atoms/Loader/Loader';
 
-class VirtualizedExampleGrid extends PureComponent {
+class VirtualizedExampleGrid extends PureComponent<Object, Object> {
 
   static propTypes = {
     isLoading: PropTypes.bool,
     list: PropTypes.array,
+    fetchPeople: PropTypes.func,
+    hasServerState: PropTypes.bool,
+    setServerState: PropTypes.func,
+    cleanServerState: PropTypes.func,
   };
 
   constructor(props) {
@@ -42,7 +47,7 @@ class VirtualizedExampleGrid extends PureComponent {
     if (isLoading) { return <Loader />; }
     function cellRenderer({ columnIndex, key, rowIndex, style }) {
       return (
-        <div key={key} style={style}>{/* {list} */} {rowIndex} : {columnIndex}</div>
+        <div key={key} style={style}>{list.name} {rowIndex} : {columnIndex}</div>
       );
     }
     return (
@@ -52,7 +57,7 @@ class VirtualizedExampleGrid extends PureComponent {
             cellRenderer={cellRenderer}
             columnCount={10}
             columnWidth={100}
-            rowCount={20}
+            rowCount={100}
             rowHeight={50}
             width={width}
             height={height}
