@@ -36,6 +36,7 @@ class VirtualizedExampleGrid extends PureComponent {
 
   render() {
     const { list } = this.props;
+    console.log('List', list);
     function cellRenderer({ columnIndex, key, rowIndex }) {
       return (
         <div key={key}>{/*{list} */}some cell</div>
