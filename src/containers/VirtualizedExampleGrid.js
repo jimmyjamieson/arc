@@ -7,16 +7,16 @@ import { withServerState } from '../utils/with-server-state';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
 
-function cellRenderer({ list }) {
+function cellRenderer({ columnIndex, key, rowIndex, style }) {
   return (
-    <div key={Math.random()}>{list.name} some cell</div>
+    <div key={key}>some cell</div>
   );
 }
 
 class VirtualizedExampleGrid extends PureComponent {
 
   static propTypes = {
-    list: PropTypes.object,
+    list: PropTypes.array,
   };
 
   constructor(props) {
