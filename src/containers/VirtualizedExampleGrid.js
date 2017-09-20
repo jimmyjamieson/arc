@@ -42,7 +42,7 @@ class VirtualizedExampleGrid extends PureComponent {
     if (isLoading) { return <Loader />; }
     function cellRenderer({ columnIndex, key, rowIndex }) {
       return (
-        <div key={key}>{/* {list} */} {rowIndex} : {columnIndex} some cell</div>
+        <div key={key}>{/* {list} */} {rowIndex} : {columnIndex} some cell <Loader /></div>
       );
     }
     return (
