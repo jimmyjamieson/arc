@@ -7,12 +7,6 @@ import { withServerState } from '../utils/with-server-state';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
 
-function cellRenderer({ columnIndex, key, rowIndex, style }) {
-  return (
-    <div key={key}>some cell</div>
-  );
-}
-
 class VirtualizedExampleGrid extends PureComponent {
 
   static propTypes = {
@@ -41,7 +35,12 @@ class VirtualizedExampleGrid extends PureComponent {
   }
 
   render() {
-    console.log('list', this.props.list);
+    const { list } = this.props;
+    function cellRenderer({ columnIndex, key, rowIndex }) {
+      return (
+        <div key={key}>{list} some cell</div>
+      );
+    }
     return (
       <AutoSizer>
         {({ height, width }) => (
