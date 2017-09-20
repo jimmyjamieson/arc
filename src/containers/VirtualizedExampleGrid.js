@@ -10,6 +10,7 @@ import { isBrowser, isServer } from '../config';
 class VirtualizedExampleGrid extends PureComponent {
 
   static propTypes = {
+    isLoading: PropTypes.bool,
     list: PropTypes.array,
   };
 
@@ -35,8 +36,9 @@ class VirtualizedExampleGrid extends PureComponent {
   }
 
   render() {
-    const { list } = this.props;
+    const { list, isLoading } = this.props;
     console.log('List', list);
+    if (isLoading) { return <div>Loading...</div>; }
     function cellRenderer({ columnIndex, key, rowIndex }) {
       return (
         <div key={key}>{/*{list} */}some cell</div>
