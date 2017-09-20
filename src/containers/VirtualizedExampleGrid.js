@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { AutoSizer, Grid } from 'react-virtualized';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -6,13 +7,24 @@ import { withServerState } from '../utils/with-server-state';
 import { fetchPeople } from '../store/people/list';
 import { isBrowser, isServer } from '../config';
 
-function cellRenderer() {
+function cellRenderer({ list }) {
   return (
-    <div>some cell</div>
+    <div key={Math.random()}>{list.name} some cell</div>
   );
 }
 
 class VirtualizedExampleGrid extends PureComponent {
+
+  static propTypes = {
+    list: PropTypes.object,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: this.props.list,
+    };
+  }
 
   componentWillMount() {
     const { fetchPeople, hasServerState, setServerState, cleanServerState } = this.props;
@@ -29,6 +41,7 @@ class VirtualizedExampleGrid extends PureComponent {
   }
 
   render() {
+    console.log('list', this.props.list);
     return (
       <AutoSizer>
         {({ height, width }) => (
@@ -36,7 +49,7 @@ class VirtualizedExampleGrid extends PureComponent {
             cellRenderer={cellRenderer}
             columnCount={10}
             columnWidth={100}
-            rowCount={10}
+            rowCount={20}
             rowHeight={50}
             width={width}
             height={height}
@@ -47,7 +60,8 @@ class VirtualizedExampleGrid extends PureComponent {
 }
 
 const mapStateToProps = (state:Object) => ({
-  list: state.people.list,
+  isLoading: state.people.list.loading,
+  list: state.people.list.data.results,
 });
 
 const mapDispatchToProps = (dispatch:Object) => ({
