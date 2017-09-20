@@ -17,7 +17,7 @@ class VirtualizedExampleGrid extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      list: this.props.list,
+      list: this.props.list || [],
     };
   }
 
