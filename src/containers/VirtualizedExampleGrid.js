@@ -46,8 +46,9 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
     console.log('List', list);
     if (isLoading) { return <Loader />; }
     function cellRenderer({ columnIndex, key, rowIndex, style }) {
+      console.log('ListColumnIndex', list[columnIndex], 'ListRowIndex', list[rowIndex], rowIndex, columnIndex, key);
       return (
-        <div key={key} style={style}>{list.name} {rowIndex} : {columnIndex}</div>
+        <div key={key} style={style}>{list[rowIndex][columnIndex]}</div>
       );
     }
     return (
@@ -57,7 +58,7 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
             cellRenderer={cellRenderer}
             columnCount={10}
             columnWidth={100}
-            rowCount={100}
+            rowCount={20}
             rowHeight={50}
             width={width}
             height={height}
