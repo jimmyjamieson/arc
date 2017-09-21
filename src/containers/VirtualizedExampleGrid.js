@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Immutable from "immutable";
 import { AutoSizer, Grid } from 'react-virtualized';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -13,7 +14,7 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
 
   static propTypes = {
     isLoading: PropTypes.bool,
-    list: PropTypes.array,
+    list: PropTypes.instanceOf(Immutable.List).isRequired,
     fetchPeople: PropTypes.func,
     hasServerState: PropTypes.bool,
     setServerState: PropTypes.func,
@@ -55,7 +56,7 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
       <AutoSizer>
         {({ height, width }) => (
           <Grid
-            cellRenderer={cellRenderer}
+            cellRenderer={({ columnIndex, isScrolling, rowIndex, key }) => <div key={key} />}
             columnCount={10}
             columnWidth={100}
             rowCount={20}
