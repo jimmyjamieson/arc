@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Immutable from "immutable";
+import Immutable from 'immutable';
 import { AutoSizer, Grid } from 'react-virtualized';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
