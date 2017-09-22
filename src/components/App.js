@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
+// import '../styles/index.scss';
 
 import GlobalTemplate from './templates/GlobalTemplate';
 import theme from './themes/default';

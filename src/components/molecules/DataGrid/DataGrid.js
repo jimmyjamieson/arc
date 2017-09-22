@@ -1,76 +1,37 @@
-// @flow
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import { DataGridProps, DataGridDefaultProps } from './DataGridProps';
-import Field from '../Field/Field';
-import DataItem from '../DataItem/DataItem';
-import { Table, Thead, Tbody, Th, Tr, Td } from '../../atoms/Table';
+import PropTypes from 'prop-types';
+import { DataScroller } from 'primereact/components/datascroller/DataScroller';
 
-const GridContainer = styled.div`
-  display: block;
-  max-width: 100%;
-  min-width: 100%;
-  overflow: auto;
-`;
-
-class DataGrid extends PureComponent<Object, Object> {
+class DataGrid extends PureComponent {
   static propTypes = {
-    ...DataGridProps,
+    data: PropTypes.array,
+    columns: PropTypes.array,
   };
-  static defaultProps = {
-    ...DataGridDefaultProps,
-  };
-  constructor(props:Object) {
+  constructor(props) {
     super(props);
     this.state = {
-      filters: {},
+      data: [],
+      columns: [],
     };
+    this.GridRowTemplate = this.GridRowTemplate.bind(this);
   }
-  filter = (e:Object) => {
-    console.log('state.search', this.state.search);
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      filters:
-      {
-        ...this.state.filters,
-        [e.target.name]: e.target.value,
-      },
+      data: nextProps.data,
+      columns: nextProps.columns,
     });
-    console.log('Filters...', this.state.filters);
-  };
-  render() {
-    const { data, config, loading } = this.props;
-    const filteredData = data.filter(
-      item => item.name.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1,
-    );
+  }
+  GridRowTemplate(row) {
+    // console.log('Row', row);
     return (
-      <GridContainer>
-        { loading ?
-          <p>Loading...</p> :
-          <Table>
-            <Thead>
-              <Tr>
-                {config.map(header => (
-                  <Th key={`header-${header.fieldKey}`}>
-                    {header.name}
-                    <Field name={header.fieldKey} type={header.type} placeholder={`Filter ${header.name}`} onChange={this.filter} />
-                  </Th>
-                  ))}
-              </Tr>
-            </Thead>
-            <Tbody>
-              {filteredData.map(field => (
-                <Tr key={field.name}>
-                  {config.map(conf => (
-                    <Td key={`col-${conf.fieldKey}`}><DataItem name={conf.fieldKey} type={conf.type} value={field[conf.fieldKey]} editable={conf.editable} /></Td>
-                    ))}
-                </Tr>
-                ))}
-            </Tbody>
-          </Table>
-        }
-      </GridContainer>
+      <div>{row.name}</div>
+    );
+  }
+  render() {
+    // console.log('Data', this.state.data);
+    return (
+      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={10} />
     );
   }
 }
-
 export default DataGrid;

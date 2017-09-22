@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Immutable from 'immutable';
+import { List } from 'immutable';
 import { AutoSizer, Grid } from 'react-virtualized';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
 
   static propTypes = {
     isLoading: PropTypes.bool,
-    list: PropTypes.instanceOf(Immutable.List).isRequired,
+    list: PropTypes.instanceOf(List).isRequired,
     fetchPeople: PropTypes.func,
     hasServerState: PropTypes.bool,
     setServerState: PropTypes.func,
@@ -24,7 +24,8 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
   constructor(props) {
     super(props);
     this.state = {
-      list: this.props.list || [],
+      list: List([this.props.list || []]),
+      isLoading: this.props.isLoading,
     };
   }
 
@@ -43,7 +44,7 @@ class VirtualizedExampleGrid extends PureComponent<Object, Object> {
   }
 
   render() {
-    const { list, isLoading } = this.props;
+    const { list, isLoading } = this.state;
     console.log('List', list);
     if (isLoading) { return <Loader />; }
     function cellRenderer({ columnIndex, key, rowIndex, style }) {
