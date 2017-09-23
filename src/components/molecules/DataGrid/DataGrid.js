@@ -6,12 +6,15 @@ class DataGrid extends PureComponent {
   static propTypes = {
     data: PropTypes.array,
     columns: PropTypes.array,
+    load: PropTypes.func,
+    loadData: PropTypes.func,
   };
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       columns: [],
+      filters: [],
     };
     this.GridRowTemplate = this.GridRowTemplate.bind(this);
   }
@@ -21,6 +24,10 @@ class DataGrid extends PureComponent {
       columns: nextProps.columns,
     });
   }
+  load = (event) => {
+    console.log('Event', event);
+    // this.props.loadData();
+  };
   GridRowTemplate(row) {
     // console.log('Row', row);
     return (
@@ -30,7 +37,7 @@ class DataGrid extends PureComponent {
   render() {
     // console.log('Data', this.state.data);
     return (
-      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={10} />
+      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={20} onLazyLoad={this.props.load} />
     );
   }
 }
