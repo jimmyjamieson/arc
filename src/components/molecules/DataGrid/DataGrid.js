@@ -26,7 +26,7 @@ class DataGrid extends PureComponent {
   }
   load = (event) => {
     console.log('Event', event);
-    // this.props.loadData();
+    this.props.loadData();
   };
   GridRowTemplate(row) {
     // console.log('Row', row);
@@ -37,7 +37,7 @@ class DataGrid extends PureComponent {
   render() {
     // console.log('Data', this.state.data);
     return (
-      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={20} onLazyLoad={this.props.load} />
+      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={20} lazy={true} onLazyLoad={this.props.load} header="Scroll Down to to Load More" />
     );
   }
 }
