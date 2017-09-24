@@ -12,11 +12,13 @@ import FormsPage from './pages/FormsPage/index';
 import ChartsPage from './pages/ChartsPage/ChartsPage';
 import GridsPage from './pages/GridPage/GridPage';
 import Error404 from './pages/Errors/404';
+import PrimeReactCss from '../styles/primereact';
 
 injectGlobal`
    *, *:after, *:before {
         box-sizing: border-box;
    }
+   ${PrimeReactCss};
    html {
     font-size: 1rem;
     line-height: 1.5;

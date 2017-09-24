@@ -10,8 +10,8 @@ import { isBrowser, isServer } from '../config';
 
 class PeopleGridContainer extends PureComponent<Object, Object> {
   static propTypes = {
-    list: PropTypes.object.isRequired,
-    loading: PropTypes.bool,
+    list: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool,
     fetchPeople: PropTypes.func.isRequired,
     hasServerState: PropTypes.bool,
     setServerState: PropTypes.func.isRequired,
@@ -32,9 +32,13 @@ class PeopleGridContainer extends PureComponent<Object, Object> {
     }
   }
 
+  loadPeople = (params) => {
+    fetchPeople(params);
+  };
+
   render() {
-    const peopleList = this.props.list.data.results;
-    const loading = this.props.list.loading;
+    const peopleList = this.props.list;
+    const loading = this.props.isLoading;
     console.log('props', this.props);
     const columns = [
       {
@@ -82,13 +86,14 @@ class PeopleGridContainer extends PureComponent<Object, Object> {
     ];
 
     return (
-      <DataGrid data={peopleList || []} columns={columns || []} loading={loading} />
+      <DataGrid data={peopleList || []} columns={columns || []} loading={loading} loadData={this.loadPeople} />
     );
   }
 }
 
 const mapStateToProps = (state:Object) => ({
-  list: state.people.list,
+  isLoading: state.people.list.loading,
+  list: state.people.list.data.results,
 });
 
 const mapDispatchToProps = (dispatch:Object) => ({
