@@ -2,7 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
-import '../styles/index.scss';
+import PrimeReactCss from '../styles/primereact';
+// import styles from '../styles/index.scss';
 
 import GlobalTemplate from './templates/GlobalTemplate';
 import theme from './themes/default';
@@ -12,7 +13,7 @@ import FormsPage from './pages/FormsPage/index';
 import ChartsPage from './pages/ChartsPage/ChartsPage';
 import GridsPage from './pages/GridPage/GridPage';
 import Error404 from './pages/Errors/404';
-import PrimeReactCss from '../styles/primereact';
+
 
 injectGlobal`
    *, *:after, *:before {
