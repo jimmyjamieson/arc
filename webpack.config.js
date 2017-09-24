@@ -43,7 +43,7 @@ const assets = () => () => ({
       { test: /\.(png|jpe?g|svg|woff2?|ttf|eot|gif)$/, loader: 'url-loader?limit=8000' },
       { test: /\.(scss)$/,
         use: [{
-          loader: 'style-loader', // creates style nodes from JS strings
+          loader: 'isomorphic-style-loader', // creates style nodes from JS strings
         }, {
           loader: 'css-loader', // translates CSS into CommonJS
         }, {

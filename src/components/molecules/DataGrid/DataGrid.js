@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { DataScroller } from 'primereact/components/datascroller/DataScroller';
+import { DataGrid as UiDataGrid } from 'primereact/components/datagrid/DataGrid';
 
 class DataGrid extends PureComponent {
   static propTypes = {
@@ -37,7 +37,7 @@ class DataGrid extends PureComponent {
   render() {
     // console.log('Data', this.state.data);
     return (
-      <DataScroller value={this.state.data} itemTemplate={this.GridRowTemplate} rows={20} lazy={true} onLazyLoad={this.props.load} header="Scroll Down to to Load More" />
+      <UiDataGrid value={this.state.data} itemTemplate={this.GridRowTemplate} rows={2} paginator onLazyLoad={this.props.load} header="Scroll Down to to Load More" />
     );
   }
 }

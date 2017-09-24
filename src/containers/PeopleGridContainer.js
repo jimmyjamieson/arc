@@ -33,7 +33,8 @@ class PeopleGridContainer extends PureComponent<Object, Object> {
   }
 
   loadPeople = (params) => {
-    fetchPeople(params);
+    console.log('Loading people...', params);
+    this.props.fetchPeople(params);
   };
 
   render() {
